@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 6450127963390510191}
   - component: {fileID: 4719566991514230038}
   - component: {fileID: 4234408610150142969}
+  - component: {fileID: 8298621925151931573}
   m_Layer: 0
   m_Name: PistolBody
   m_TagString: Untagged
@@ -187,7 +188,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510189899167043294}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.216, y: -0.151, z: 0.525}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -247,6 +248,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8298621925151931573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510189899167043294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ae8943eb32d04594226863148ffa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  range: 100
+  cam: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  hitForce: 5
 --- !u!1 &6566581590772908376
 GameObject:
   m_ObjectHideFlags: 0
