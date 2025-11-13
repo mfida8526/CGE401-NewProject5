@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 7869162403947742103}
   - component: {fileID: 7869162403947742100}
   - component: {fileID: 7869162404688100519}
+  - component: {fileID: 2075843135}
   m_Layer: 0
   m_Name: InfectedAnimal_Stag_01
   m_TagString: Untagged
@@ -854,6 +855,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+--- !u!114 &2075843135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7869162404688116809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b105813482a3a8f43ad66f7bdcef5e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40
 --- !u!1 &7869162404688119239
 GameObject:
   m_ObjectHideFlags: 0
