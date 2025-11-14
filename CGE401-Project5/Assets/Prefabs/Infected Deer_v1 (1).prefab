@@ -2644,9 +2644,10 @@ GameObject:
   - component: {fileID: 1405083057615025799}
   - component: {fileID: 1405083057615025792}
   - component: {fileID: 6737184391955313242}
+  - component: {fileID: 1656218170}
   m_Layer: 0
   m_Name: Infected Deer_v1 (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2730,6 +2731,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+--- !u!114 &1656218170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863780510132272602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2327eb6c7cee5a40928654a4f89ff3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSystem: {fileID: 0}
+  hitCooldown: 1
 --- !u!1 &8011604348606250115
 GameObject:
   m_ObjectHideFlags: 0
