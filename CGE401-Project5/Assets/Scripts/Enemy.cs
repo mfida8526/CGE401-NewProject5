@@ -24,18 +24,5 @@ public class Enemy : MonoBehaviour
                 playerHealth.TakeDamage(); // call damage method
             }
         }
-
-         /*   // Check if the collided object has the "Player" tag
-            if (hit.collider.CompareTag("Player"))
-        {
-            // Get the HealthSystem component from the player
-            HealthSystem playerHealth = hit.collider.GetComponent<HealthSystem>();
-
-            if (playerHealth != null && Time.time - lastHitTime > hitCooldown)
-            {
-                lastHitTime = Time.time; // reset hit timer
-                playerHealth.TakeDamage(); // call damage method
-            }
-        }*/
     }
 }
