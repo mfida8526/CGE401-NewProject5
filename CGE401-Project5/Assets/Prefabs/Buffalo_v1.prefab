@@ -8193,11 +8193,11 @@ GameObject:
   - component: {fileID: 3084624396283617572}
   - component: {fileID: 5488200432535922643}
   - component: {fileID: 5911456473576001839}
-  - component: {fileID: 7374230736481474824}
   - component: {fileID: 4067027091968124016}
+  - component: {fileID: 360402434}
   m_Layer: 0
   m_Name: Buffalo_v1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8265,25 +8265,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2742587007247028966}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.055107854, y: 0.09998616, z: 0.16878927}
-  m_Center: {x: -0.0006820106, y: 0.046201766, z: 0.022712488}
---- !u!114 &7374230736481474824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2742587007247028966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2327eb6c7cee5a40928654a4f89ff3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSystem: {fileID: 0}
-  hitCooldown: 1
+  m_Size: {x: 0.055107858, y: 0.09594084, z: 0.16878927}
+  m_Center: {x: -0.00068201125, y: 0.04822446, z: 0.022712482}
 --- !u!114 &4067027091968124016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8297,6 +8283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+--- !u!114 &360402434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742587007247028966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b105813482a3a8f43ad66f7bdcef5e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40
 --- !u!1 &2752163701337731801
 GameObject:
   m_ObjectHideFlags: 0

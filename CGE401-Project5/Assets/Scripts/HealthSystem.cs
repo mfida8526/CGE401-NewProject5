@@ -6,8 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /*
-* Maile Fidale and Mimi Davis
-* Project1
+* Maile Fidale
+* Project5
 * Hearts for the player, loses when hit by enemy 
 */
 
