@@ -8197,7 +8197,7 @@ GameObject:
   - component: {fileID: 612867960}
   m_Layer: 0
   m_Name: Buffalo_v1
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8283,6 +8283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  infectedAnimal: {fileID: 0}
+  curedAnimal: {fileID: 0}
 --- !u!114 &612867960
 MonoBehaviour:
   m_ObjectHideFlags: 0

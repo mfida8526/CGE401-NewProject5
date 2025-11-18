@@ -7,7 +7,7 @@ using UnityEngine;
     * Project 5
     * Uninfected animal movement/ roaming
 */
-public class UninfectedAnimal : MonoBehaviour
+public class Friendly : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 0.5f;           // Walking speed

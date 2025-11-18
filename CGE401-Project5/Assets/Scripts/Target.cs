@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
     {
         infectedAnimal.SetActive(false);
         curedAnimal.SetActive(true);
+        GameManager.Instance.AdjustDifficulty(0.05f);
     }
 
     /*    void Die()
