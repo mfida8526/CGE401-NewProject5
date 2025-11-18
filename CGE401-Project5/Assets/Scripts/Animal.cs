@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    * Maile Fidale
+    * Project 5
+    * Extension
+*/
 public class Animal : MonoBehaviour
 {
     [HideInInspector]

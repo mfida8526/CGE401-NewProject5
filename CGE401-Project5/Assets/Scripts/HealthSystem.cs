@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 /*
 * Maile Fidale
-* Project5
+* Project 5
 * Hearts for the player, loses when hit by enemy 
 */
 

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    * Maile Fidale
+    * Project 5
+    * Player and enemy collision with health system and cooldown
+*/
 public class PlayerCollision : MonoBehaviour
 {
     public HealthSystem healthSystem;

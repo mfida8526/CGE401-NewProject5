@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
     * Maile Fidale
-    * Assignment 6
+    * Project 5
     * Shotgun weapon extension
 */
 public class Shotgun : Weapons

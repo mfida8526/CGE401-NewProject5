@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
     * Maile Fidale
-    * Assignment 6
+    * Project 5
     * Pistol weapon extension
 */
 public class Pistol : Weapons

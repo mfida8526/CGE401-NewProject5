@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    * Maile Fidale
+    * Project 5
+    * Uninfected animal movement/ roaming
+*/
 public class UninfectedAnimal : MonoBehaviour
 {
     [Header("Movement Settings")]

@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    * Maile Fidale
+    * Project 5
+    * Infected animal movement and player damage
+*/
+
 public class InfectedAnimal : MonoBehaviour
 {
     [Header("Movement")]

@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
     * Maile Fidale
-    * Assignment 6
+    * Project 5
     * Allows player to switch weapons
 */
 public class WeaponSwitcher : MonoBehaviour

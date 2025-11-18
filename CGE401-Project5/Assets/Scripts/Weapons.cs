@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
     * Maile Fidale
-    * Assignment 6
+    * Project 5
     * Reads other weapon scripts
 */
 public abstract class Weapons : MonoBehaviour, IWeapon
