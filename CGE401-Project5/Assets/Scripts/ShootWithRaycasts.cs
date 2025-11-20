@@ -10,6 +10,8 @@ public class ShootWithRaycasts : MonoBehaviour
     public Camera cam;
     public ParticleSystem muzzleFlash;
     public float hitForce = 10f;
+    public Spawner spawner;
+    public float timePenalty = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,17 @@ public class ShootWithRaycasts : MonoBehaviour
             Debug.Log(hitInfo.transform.gameObject.name);
 
             Target target = hitInfo.transform.gameObject.GetComponent<Target>();
+            if (hitInfo.transform.CompareTag("Enemy"))
+            {
+                // Increase spawn rate (decrease spawn time)
+                spawner.AdjustSpawnRate(-0.1f); // Adjust value as needed
+            }
+            else if (hitInfo.transform.CompareTag("Friendly"))
+            {
+                // Decrease spawn rate (increase spawn time)
+                spawner.AdjustSpawnRate(0.1f); // Adjust value as needed
+                spawner.DeductTime(timePenalty);
+            }
 
             if (target != null)
             {

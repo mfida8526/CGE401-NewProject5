@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    public bool isInfected = false;
     public float health = 50f;
 
     public GameObject infectedAnimal;
@@ -12,17 +13,18 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health <= 0)
+        if (health <= 0 && isInfected)
         {
             CureAnimal();
+
         }
+
     }
 
     void CureAnimal()
     {
         infectedAnimal.SetActive(false);
         curedAnimal.SetActive(true);
-        GameManager.Instance.AdjustDifficulty(0.05f);
     }
 
     /*    void Die()
