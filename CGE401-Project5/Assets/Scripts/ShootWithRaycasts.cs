@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootWithRaycasts : MonoBehaviour
 {
@@ -12,11 +13,12 @@ public class ShootWithRaycasts : MonoBehaviour
     public float hitForce = 10f;
     public Spawner spawner;
     public float timePenalty = 5f;
+    public Slider progressBarSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ public class ShootWithRaycasts : MonoBehaviour
                 {
                     hitInfo.rigidbody.AddForce(cam.transform.TransformDirection(Vector3.forward) * hitForce, ForceMode.Impulse);
                 }
+
             }
         }
     }
