@@ -4,79 +4,86 @@ using UnityEngine.UI; // Required for UI Text
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] animalPrefabs; // List of all animal prefabs
-    public Transform[] spawnPoints; // Array of potential spawn locations
+    public GameObject[] animalPrefabs; // Array of animal prefabs (friendly and infected)
+    public float initialSpawnDelay = 2f; // Initial time between spawns
+    public float minSpawnDelay = 0.5f; // Minimum possible spawn delay
+    public float maxSpawnDelay = 5f; // Maximum spawn time
+    public float spawnRateIncreaseAmount = 0.1f; // Amount to decrease the delay by
+    public float gameTimerDuration = 60f; // Total game time in seconds
+    public Text timerText; // Optional: UI Text element to display the timer
 
-    public float initialSpawnTime = 2f;
-    public float minSpawnTime = 0.5f; // Cap the minimum spawn time
-    public float maxSpawnTime = 5f; // Cap the maximum spawn time
-    public Text timerText; // UI Text to display remaining time
+    private float currentSpawnDelay;
+    private float gameTimer;
+    public HealthSystem healthSystem;
 
-    private float timeBetweenSpawns;
-    private float gameTimer = 60f; // Total game time in seconds
-    public ShootWithRaycasts shootWithRaycasts;
-
+    private float leftBound = -5;
+    private float rightBound = 5;
+    private float spawnPosZ = 20;
     void Start()
     {
-        timeBetweenSpawns = initialSpawnTime;
-        StartCoroutine(SpawnRoutine());
+        currentSpawnDelay = initialSpawnDelay;
+        gameTimer = gameTimerDuration;
+        StartCoroutine(SpawnAnimalsRoutine());
     }
 
-    public void Update()
+    void Update()
     {
-        // Decrease game timer
-
+        // Update the game timer
         gameTimer -= Time.deltaTime;
         if (timerText != null)
         {
-            timerText.text = "Time: " + Mathf.FloorToInt(gameTimer).ToString();
+            timerText.text = "Time: " + Mathf.Round(gameTimer).ToString();
         }
 
         if (gameTimer <= 0)
         {
-            // Handle game over condition (stop spawning, etc.)
-            StopCoroutine(SpawnRoutine());
+            // Game over logic
+            Debug.Log("Game Over!");
+            StopCoroutine(SpawnAnimalsRoutine());
+            // Add game over scene load or other logic here
         }
     }
 
-    IEnumerator SpawnRoutine()
+    IEnumerator SpawnAnimalsRoutine()
     {
-        while (gameTimer > 0) // Only spawn while game is active
+        while (gameTimer > 0 && !healthSystem.gameOver)
         {
-            // Wait for the current spawn time
-            yield return new WaitForSeconds(timeBetweenSpawns);
-
-            // Spawn an animal
+            yield return new WaitForSeconds(currentSpawnDelay);
+            float randomDelay = Random.Range(1.5f, 2.0f);
             SpawnAnimal();
         }
     }
 
     void SpawnAnimal()
     {
-        // Choose a random prefab and a random spawn point
-        int prefabIndex = Random.Range(0, animalPrefabs.Length);
-        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+        // Instantiate a random animal from the list
+       int prefabIndex = Random.Range(0, animalPrefabs.Length); 
+            
+            Vector3 spawnPos = new Vector3(Random.Range(leftBound, rightBound), 0, spawnPosZ);
 
-        Instantiate(animalPrefabs[prefabIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            Instantiate(animalPrefabs[prefabIndex], spawnPos, animalPrefabs[prefabIndex].transform.rotation);
     }
 
     // Public method to be called by the PlayerShooting script
-    public void AdjustSpawnRate(float adjustment)
+    public void IncreaseSpawnRate()
     {
-        timeBetweenSpawns += adjustment;
-        // Clamp the spawn time between min and max values
-        timeBetweenSpawns = Mathf.Clamp(timeBetweenSpawns, minSpawnTime, maxSpawnTime);
+        // Decrease the delay (increase the rate), ensuring it doesn't go below the minimum
+        currentSpawnDelay = Mathf.Max(minSpawnDelay, currentSpawnDelay - spawnRateIncreaseAmount);
+        Debug.Log("Spawn rate increased! New delay: " + currentSpawnDelay);
     }
-    public void DeductTime(float penalty)
+    public void DecreaseSpawnRate()
     {
-        gameTimer -= penalty;
-        if (gameTimer <= 0)
-        {
-            gameTimer = 0;
-            // Additional game over logic can be triggered here too
- 
-        }
+        currentSpawnDelay = Mathf.Min(maxSpawnDelay, currentSpawnDelay + spawnRateIncreaseAmount);
+        Debug.Log("Spawn rate decreased! New time between spawns: " + currentSpawnDelay);
+    }
+
+    // Public method to be called by the PlayerShooting script
+    public void DecreaseGameTimer(float amount)
+    {
+        gameTimer -= amount;
+        Debug.Log("Friendly hit! Time decreased by: " + amount + "s. Remaining time: " + gameTimer);
     }
 }
+
 
 

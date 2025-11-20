@@ -42,13 +42,13 @@ public class ShootWithRaycasts : MonoBehaviour
             if (hitInfo.transform.CompareTag("Enemy"))
             {
                 // Increase spawn rate (decrease spawn time)
-                spawner.AdjustSpawnRate(-0.1f); // Adjust value as needed
+                spawner.IncreaseSpawnRate(); // Adjust value as needed
             }
             else if (hitInfo.transform.CompareTag("Friendly"))
             {
                 // Decrease spawn rate (increase spawn time)
-                spawner.AdjustSpawnRate(0.1f); // Adjust value as needed
-                spawner.DeductTime(timePenalty);
+                spawner.DecreaseSpawnRate(); // Adjust value as needed
+                spawner.DecreaseGameTimer(timePenalty);
             }
 
             if (target != null)
