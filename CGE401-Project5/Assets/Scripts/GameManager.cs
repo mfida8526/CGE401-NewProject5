@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void UpdateProgressUI()
+    public void UpdateProgressUI()
     {
         progressBar.value = score;
         if (score >= requiredProgress)

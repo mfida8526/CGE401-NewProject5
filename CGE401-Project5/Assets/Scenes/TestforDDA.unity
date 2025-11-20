@@ -7097,7 +7097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575255000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d261e17e1260d438ba0bc9f3ea1ca5, type: 3}
   m_Name: 
@@ -11632,6 +11632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 933577077}
+  - component: {fileID: 933577078}
   - component: {fileID: 933577076}
   m_Layer: 0
   m_Name: SpawnManager2
@@ -11677,6 +11678,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933577078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933577075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c07df4552112704083bec95f42bda0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalPrefabs: []
+  initialSpawnDelay: 2
+  minSpawnDelay: 0.5
+  maxSpawnDelay: 5
+  spawnRateIncreaseAmount: 0.1
+  gameTimerDuration: 140
+  timerText: {fileID: 0}
+  healthSystem: {fileID: 0}
 --- !u!1 &949800732
 GameObject:
   m_ObjectHideFlags: 0
@@ -33601,7 +33622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: muzzleFlash

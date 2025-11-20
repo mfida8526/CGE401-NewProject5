@@ -10,6 +10,7 @@ public class Target : MonoBehaviour
     public GameObject infectedAnimal;
     public GameObject curedAnimal;
 
+
     public void TakeDamage(float amount)
     {
         health -= amount;
