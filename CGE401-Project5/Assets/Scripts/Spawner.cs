@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; // Required for UI Text
+using UnityEngine.UI; 
 
 public class Spawner : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     public float minSpawnDelay = 0.5f; // Minimum possible spawn delay
     public float maxSpawnDelay = 5f; // Maximum spawn time
     public float spawnRateIncreaseAmount = 0.1f; // Amount to decrease the delay by
-    public float gameTimerDuration = 60f; // Total game time in seconds
+    public float gameTimerDuration = 140f; // Total game time in seconds
     public Text timerText; // Optional: UI Text element to display the timer
 
     private float currentSpawnDelay;

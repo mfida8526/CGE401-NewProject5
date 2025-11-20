@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2066927981, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
   m_PrefabInstance: {fileID: 5601855052317389418}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 575255000}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5f1eb4964be5f2488893f901671a65e, type: 3}
@@ -7085,6 +7085,25 @@ PrefabInstance:
       objectReference: {fileID: 1312390253}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+--- !u!1 &575255000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4510189899167043294, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
+  m_PrefabInstance: {fileID: 5601855052317389418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &575255005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575255000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d261e17e1260d438ba0bc9f3ea1ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  range: 100
 --- !u!1 &642894323
 GameObject:
   m_ObjectHideFlags: 0
@@ -11630,23 +11649,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 933577075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c07df4552112704083bec95f42bda0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 287e7bb7bb26f1a4e911cd7602443d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalPrefabs:
-  - {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
-  - {fileID: 2686693857524636612, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
-  - {fileID: 30470755390308488, guid: f9b6b02a4282ac64983c3eb45532029c, type: 3}
-  - {fileID: 5154615329800237663, guid: e5dd3f793380bf249bb02105510949a3, type: 3}
-  - {fileID: 1781419452869518762, guid: 1c2d9a431875dd749887069b87e09626, type: 3}
-  - {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
-  initialSpawnDelay: 2
-  minSpawnDelay: 0.5
-  maxSpawnDelay: 5
-  spawnRateIncreaseAmount: 0.1
-  gameTimerDuration: 60
-  timerText: {fileID: 1715218483}
-  healthSystem: {fileID: 815627001}
+  normalAnimalPrefabs:
+  - {fileID: 1615931191}
+  - {fileID: 2086529573}
+  - {fileID: 100025696}
+  infectedAnimalPrefabs:
+  - {fileID: 9076901514320290795}
+  - {fileID: 3045963505080513571}
+  - {fileID: 1149745604}
+  initialSpawnRate: 2
+  minSpawnRate: 0.5
+  maxSpawnRate: 5
 --- !u!4 &933577077
 Transform:
   m_ObjectHideFlags: 0
@@ -23531,7 +23547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000091552734, y: 6.132202}
+  m_AnchoredPosition: {x: 0.00012207031, y: 6.132202}
   m_SizeDelta: {x: -366.64, y: -329.024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!43 &1543606917
@@ -27659,6 +27675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1902181446}
+  - component: {fileID: 1902181445}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -27666,6 +27683,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1902181445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902181444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbb3bd1488119446bf141ca4f849e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1715218483}
+  progressBar: {fileID: 1283960073}
+  gameTimer: 140
+  InfectedSpawnChance: 0.2
 --- !u!4 &1902181446
 Transform:
   m_ObjectHideFlags: 0
@@ -33565,10 +33598,10 @@ PrefabInstance:
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: spawner
       value: 
-      objectReference: {fileID: 933577076}
+      objectReference: {fileID: 0}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: muzzleFlash
@@ -33577,7 +33610,7 @@ PrefabInstance:
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: spawnerManager
       value: 
-      objectReference: {fileID: 933577076}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
 --- !u!33 &5653283350794603629
