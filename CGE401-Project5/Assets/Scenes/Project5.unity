@@ -7015,7 +7015,7 @@ GameObject:
   - component: {fileID: 597526564}
   - component: {fileID: 597526565}
   m_Layer: 5
-  m_Name: IntroductionText
+  m_Name: IntroductionScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
