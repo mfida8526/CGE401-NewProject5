@@ -7056,7 +7056,7 @@ MonoBehaviour:
   introductionText: {fileID: 3240212157681881494}
   titleText: {fileID: 3240212157590476329}
   dialogue:
-  - 'The nearby forest has been contaminated with a deadly virus. '
+  - The nearby forest has been contaminated with a deadly virus (press space to continue)
   - 'You are tasked with curing the animals in the area while being mindful of the
     uninfected animals. '
   - 'Aim with your mouse and shoot with your left mouse button to cure the infected

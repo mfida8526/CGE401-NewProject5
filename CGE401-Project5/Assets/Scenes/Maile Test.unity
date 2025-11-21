@@ -10201,6 +10201,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 1702710275365721636, guid: f1ed5742847ebb744b0b57efb0c56504, type: 3}
+      propertyPath: m_Text
+      value: Outbreak
+      objectReference: {fileID: 0}
     - target: {fileID: 1702710275365721637, guid: f1ed5742847ebb744b0b57efb0c56504, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.0000052452

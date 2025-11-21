@@ -20,6 +20,9 @@ public class IntroductionText : MonoBehaviour
     public GameObject contButton;
     public float wordSpeed;
 
+    private bool isTyping = false;   // Prevents skipping while typing
+    private bool lineFinished = false;
+
     void Start()
     {
         introductionPanel.SetActive(true);
@@ -29,43 +32,41 @@ public class IntroductionText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (introductionText.text == dialogue[index])
-        {
-            contButton.SetActive(true);
-        }
-    }
+        // Show continue button when finished
+        contButton.SetActive(lineFinished);
 
-    public void zeroText()
-    {
-        introductionText.text = "";
-        index = 0;
-        introductionPanel.SetActive(false);
+        // Player presses space to continue
+        if (lineFinished && Input.GetKeyDown(KeyCode.Space))
+        {
+            NextLine();
+        }
     }
 
     IEnumerator Typing()
     {
-        foreach (char letter in dialogue[index].ToCharArray())
+        isTyping = true;
+        lineFinished = false;
+        introductionText.text = "";
+
+        foreach (char letter in dialogue[index])
         {
             introductionText.text += letter;
-            yield return new WaitForSeconds(wordSpeed);
+            yield return new WaitForSecondsRealtime(wordSpeed);
         }
+
+        isTyping = false;
+        lineFinished = true;
     }
 
     public void NextLine()
     {
-
-        contButton.SetActive(false);
-
         if (index < dialogue.Length - 1)
         {
             index++;
-            introductionText.text = "";
             StartCoroutine(Typing());
         }
         else
         {
-            zeroText();
             introductionPanel.SetActive(false);
             Time.timeScale = 1f;
         }
