@@ -11653,14 +11653,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287e7bb7bb26f1a4e911cd7602443d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalAnimalPrefabs:
-  - {fileID: 1615931191}
-  - {fileID: 2086529573}
-  - {fileID: 100025696}
-  infectedAnimalPrefabs:
-  - {fileID: 9076901514320290795}
-  - {fileID: 3045963505080513571}
-  - {fileID: 1149745604}
+  animalPrefabs:
+  - {fileID: 30470755390308488, guid: f9b6b02a4282ac64983c3eb45532029c, type: 3}
+  - {fileID: 2686693857524636612, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
+  - {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
+  - {fileID: 1781419452869518762, guid: 1c2d9a431875dd749887069b87e09626, type: 3}
+  - {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
+  - {fileID: 5154615329800237663, guid: e5dd3f793380bf249bb02105510949a3, type: 3}
   initialSpawnRate: 2
   minSpawnRate: 0.5
   maxSpawnRate: 5
@@ -11685,12 +11684,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933577075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c07df4552112704083bec95f42bda0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalPrefabs: []
+  animalPrefabs:
+  - {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
+  - {fileID: 2686693857524636612, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
+  - {fileID: 30470755390308488, guid: f9b6b02a4282ac64983c3eb45532029c, type: 3}
+  - {fileID: 5154615329800237663, guid: e5dd3f793380bf249bb02105510949a3, type: 3}
+  - {fileID: 1781419452869518762, guid: 1c2d9a431875dd749887069b87e09626, type: 3}
+  - {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
   initialSpawnDelay: 2
   minSpawnDelay: 0.5
   maxSpawnDelay: 5
@@ -33619,11 +33624,15 @@ PrefabInstance:
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: spawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 933577078}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1902181445}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: muzzleFlash
       value: 

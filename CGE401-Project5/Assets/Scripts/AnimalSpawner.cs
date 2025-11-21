@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class AnimalSpawner : MonoBehaviour
 {
-    public GameObject[] normalAnimalPrefabs;
-    public GameObject[] infectedAnimalPrefabs;
+    public GameObject[] animalPrefabs;
     public float initialSpawnRate = 2f; // Time in seconds between spawns
     public float minSpawnRate = 0.5f; // Minimum spawn rate limit
     public float maxSpawnRate = 5f; // Maximum spawn rate limit
     private float currentSpawnRate;
     private GameManager gameManager;
+
+    private float leftBound = -5;
+    private float rightBound = 5;
+    private float spawnPosZ = 20;
 
     void Start()
     {
@@ -28,30 +31,14 @@ public class AnimalSpawner : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnRandomAnimal()
+    void SpawnRandomAnimal()
     {
-        // Simple random position within bounds (adjust as needed)
-        Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
+        // Instantiate a random animal from the list
+        int prefabIndex = Random.Range(0, animalPrefabs.Length);
 
-        // Randomly decide between normal and infected animal
-        bool spawnInfected = Random.Range(0f, 1f) < gameManager.InfectedSpawnChance;
-        GameObject animalPrefab;
+        Vector3 spawnPos = new Vector3(Random.Range(leftBound, rightBound), 0, spawnPosZ);
 
-        if (spawnInfected && infectedAnimalPrefabs.Length > 0)
-        {
-            animalPrefab = infectedAnimalPrefabs[Random.Range(0, infectedAnimalPrefabs.Length)];
-        }
-        else if (normalAnimalPrefabs.Length > 0)
-        {
-            animalPrefab = normalAnimalPrefabs[Random.Range(0, normalAnimalPrefabs.Length)];
-        }
-        else
-        {
-            Debug.LogError("No animal prefabs assigned!");
-            yield break;
-        }
-
-        Instantiate(animalPrefab, spawnPosition, Quaternion.identity);
+        Instantiate(animalPrefabs[prefabIndex], spawnPos, animalPrefabs[prefabIndex].transform.rotation);
     }
 
     public void AdjustSpawnRate(float amount)

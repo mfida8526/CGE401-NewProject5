@@ -14,6 +14,7 @@ public class ShootWithRaycasts : MonoBehaviour
     public Spawner spawner;
     public float timePenalty = 5f;
     public Slider progressBarSlider;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +46,14 @@ public class ShootWithRaycasts : MonoBehaviour
             {
                 // Increase spawn rate (decrease spawn time)
                 spawner.IncreaseSpawnRate(); // Adjust value as needed
+                gameManager.HitInfectedAnimal();
             }
             else if (hitInfo.transform.CompareTag("Friendly"))
             {
                 // Decrease spawn rate (increase spawn time)
                 spawner.DecreaseSpawnRate(); // Adjust value as needed
                 spawner.DecreaseGameTimer(timePenalty);
+                gameManager.HitNormalAnimal();
             }
 
             if (target != null)
