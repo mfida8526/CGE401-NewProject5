@@ -1289,7 +1289,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInfected: 0
   health: 20
-  gameManager: {fileID: 2968101975847811687, guid: 87c3aa0d87f95b34fae761c7d2e2ed41, type: 3}
   infectedAnimal: {fileID: 0}
   curedAnimal: {fileID: 0}
 --- !u!54 &2133956849

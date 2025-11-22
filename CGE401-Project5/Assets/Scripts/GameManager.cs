@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     // Game State Variables
     private int score = 0; // Or whatever "progress" means
     private int requiredProgress = 10;
-    public float InfectedSpawnChance = 0.2f; // Base chance
+
 
     // References to other managers
     private AnimalSpawner animalSpawner;
@@ -30,16 +30,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // Handle Timer
-
         if (timeRemaining > 0)
         {
             gameTimer -= Time.deltaTime;
             UpdateTimerUI();
         }
-        else
+        
+        if (gameTimer <= 0)
         {
-            timeRemaining = 0;
+
             GameOver();
         }
     }

@@ -942,9 +942,9 @@ GameObject:
   - component: {fileID: 1437509341794172688}
   - component: {fileID: 1475410861230748739}
   - component: {fileID: 4571372762998602306}
-  - component: {fileID: 1163578268330482828}
   - component: {fileID: 3045963505080513573}
   - component: {fileID: 3045963505080513572}
+  - component: {fileID: 8015388815994990093}
   m_Layer: 0
   m_Name: Infected Wolf
   m_TagString: Enemy
@@ -1003,23 +1003,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020974828, y: 0.031682096, z: 0.046655625}
   m_Center: {x: 0, y: 0.01597713, z: 0.0033575853}
---- !u!114 &1163578268330482828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781419452869518762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInfected: 1
-  health: 20
-  gameManager: {fileID: 2968101975847811687, guid: 87c3aa0d87f95b34fae761c7d2e2ed41, type: 3}
-  infectedAnimal: {fileID: 1781419452869518762}
-  curedAnimal: {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
 --- !u!54 &3045963505080513573
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1053,6 +1036,22 @@ MonoBehaviour:
   detectionRange: 15
   attackRange: 2
   hitCooldown: 1
+--- !u!114 &8015388815994990093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781419452869518762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInfected: 1
+  health: 20
+  infectedAnimal: {fileID: 1781419452869518762}
+  curedAnimal: {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
 --- !u!1 &1793086859363835768
 GameObject:
   m_ObjectHideFlags: 0

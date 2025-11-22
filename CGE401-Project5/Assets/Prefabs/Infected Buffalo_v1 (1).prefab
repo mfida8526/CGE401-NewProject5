@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 913431569025299274}
   - component: {fileID: 7658900652309788093}
   - component: {fileID: 8388612845112263489}
-  - component: {fileID: 2167105739460064798}
   - component: {fileID: 1770227139}
+  - component: {fileID: 3842105556541368304}
   m_Layer: 0
   m_Name: Infected Buffalo_v1 (1)
   m_TagString: Enemy
@@ -213,23 +213,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.055107858, y: 0.098686695, z: 0.16878927}
   m_Center: {x: -0.00068201125, y: 0.046851527, z: 0.022712482}
---- !u!114 &2167105739460064798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30470755390308488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInfected: 1
-  health: 100
-  gameManager: {fileID: 2968101975847811687, guid: 87c3aa0d87f95b34fae761c7d2e2ed41, type: 3}
-  infectedAnimal: {fileID: 30470755390308488}
-  curedAnimal: {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
 --- !u!114 &1770227139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +230,22 @@ MonoBehaviour:
   detectionRange: 15
   attackRange: 2
   hitCooldown: 1
+--- !u!114 &3842105556541368304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30470755390308488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInfected: 1
+  health: 50
+  infectedAnimal: {fileID: 30470755390308488}
+  curedAnimal: {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
 --- !u!1 &36089490214869362
 GameObject:
   m_ObjectHideFlags: 0
