@@ -1287,7 +1287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   health: 20
+  gameManager: {fileID: 2968101975847811687, guid: 87c3aa0d87f95b34fae761c7d2e2ed41, type: 3}
   infectedAnimal: {fileID: 0}
   curedAnimal: {fileID: 0}
 --- !u!54 &2133956849

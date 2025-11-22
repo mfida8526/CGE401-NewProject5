@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11632,7 +11632,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 933577077}
-  - component: {fileID: 933577078}
   - component: {fileID: 933577076}
   m_Layer: 0
   m_Name: SpawnManager2
@@ -11677,32 +11676,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &933577078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933577075}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c07df4552112704083bec95f42bda0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefabs:
-  - {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
-  - {fileID: 2686693857524636612, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
-  - {fileID: 30470755390308488, guid: f9b6b02a4282ac64983c3eb45532029c, type: 3}
-  - {fileID: 5154615329800237663, guid: e5dd3f793380bf249bb02105510949a3, type: 3}
-  - {fileID: 1781419452869518762, guid: 1c2d9a431875dd749887069b87e09626, type: 3}
-  - {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
-  initialSpawnDelay: 2
-  minSpawnDelay: 0.5
-  maxSpawnDelay: 5
-  spawnRateIncreaseAmount: 0.1
-  gameTimerDuration: 140
-  timerText: {fileID: 0}
-  healthSystem: {fileID: 0}
 --- !u!1 &949800732
 GameObject:
   m_ObjectHideFlags: 0
@@ -33624,7 +33597,7 @@ PrefabInstance:
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: spawner
       value: 
-      objectReference: {fileID: 933577078}
+      objectReference: {fileID: 0}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -33947,6 +33920,10 @@ PrefabInstance:
       propertyPath: wanderRadius
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1271196936479086246, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1902181445}
     - target: {fileID: 2686693857524636612, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
       propertyPath: m_Name
       value: Deer

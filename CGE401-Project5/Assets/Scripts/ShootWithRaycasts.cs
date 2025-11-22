@@ -11,10 +11,9 @@ public class ShootWithRaycasts : MonoBehaviour
     public Camera cam;
     public ParticleSystem muzzleFlash;
     public float hitForce = 10f;
-    public Spawner spawner;
-    public float timePenalty = 5f;
     public Slider progressBarSlider;
     public GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,15 +43,11 @@ public class ShootWithRaycasts : MonoBehaviour
             Target target = hitInfo.transform.gameObject.GetComponent<Target>();
             if (hitInfo.transform.CompareTag("Enemy"))
             {
-                // Increase spawn rate (decrease spawn time)
-                spawner.IncreaseSpawnRate(); // Adjust value as needed
                 gameManager.HitInfectedAnimal();
             }
             else if (hitInfo.transform.CompareTag("Friendly"))
             {
-                // Decrease spawn rate (increase spawn time)
-                spawner.DecreaseSpawnRate(); // Adjust value as needed
-                spawner.DecreaseGameTimer(timePenalty);
+
                 gameManager.HitNormalAnimal();
             }
 

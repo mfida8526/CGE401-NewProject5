@@ -1015,7 +1015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 1
   health: 20
+  gameManager: {fileID: 2968101975847811687, guid: 87c3aa0d87f95b34fae761c7d2e2ed41, type: 3}
+  infectedAnimal: {fileID: 1781419452869518762}
+  curedAnimal: {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
 --- !u!54 &3045963505080513573
 Rigidbody:
   m_ObjectHideFlags: 0
