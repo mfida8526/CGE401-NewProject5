@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     public Slider progressBar; // Progress bar for 10 units
     public float gameTimer = 140f; // Example total game time
     private float timeRemaining;
-    private const float TIME_PENALTY_SECONDS = 15f;
-    private float difficultyModifier = 1f;
+    private const float TIME_PENALTY_SECONDS = 30f;
 
     // Game State Variables
     private int score = 0; // Or whatever "progress" means
@@ -64,7 +63,7 @@ public class GameManager : MonoBehaviour
     public void HitInfectedAnimal()
     {
         // Increase spawn rate (decrease time between spawns, e.g., by -0.1f)
-        difficultyModifier += 0.05f;
+        animalSpawner.AdjustSpawnRate(-0.1f);
         score++;
         UpdateProgressUI();
         Debug.Log("Hit infected! Score: " + score + ", Spawn Rate adjusted.");
@@ -75,13 +74,9 @@ public class GameManager : MonoBehaviour
         // Decrease timer (e.g., lose 5 seconds)
         gameTimer -= TIME_PENALTY_SECONDS;
         // Decrease spawn rate slightly (increase time between spawns, e.g., by +0.05f)
-        difficultyModifier = Mathf.Max(0.5f, difficultyModifier - 0.1f);
+        animalSpawner.AdjustSpawnRate(0.05f);
         Debug.Log("Hit normal! Time penalty, Spawn Rate adjusted.");
-    }
 
-    public float GetDifficultyModifier()
-    {
-        return difficultyModifier;
     }
 
     void GameOver()

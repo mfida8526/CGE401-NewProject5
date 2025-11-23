@@ -41,10 +41,6 @@ public class ShootWithRaycasts : MonoBehaviour
             Debug.Log(hitInfo.transform.gameObject.name);
 
             Target target = hitInfo.transform.GetComponent<Target>();
-            if (hitInfo.transform.CompareTag("Friendly"))
-            {
-                gameManager.HitNormalAnimal();
-            }
 
             if (target != null)
             {

@@ -5,10 +5,10 @@ using UnityEngine;
 public class AnimalSpawner : MonoBehaviour
 {
     public GameObject[] animalPrefabs;
+    public float initialSpawnRate = 2f; // Time in seconds between spawns
     public float minSpawnRate = 0.5f; // Minimum spawn rate limit
     public float maxSpawnRate = 5f; // Maximum spawn rate limit
-    private float currentSpawnRate;
-    public float baseSpawnRate = 3f;
+    public float currentSpawnRate;
     private GameManager gameManager;
 
     private float leftBound = -5;
@@ -19,7 +19,7 @@ public class AnimalSpawner : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        currentSpawnRate = baseSpawnRate;
+        currentSpawnRate = initialSpawnRate;
         StartCoroutine(SpawnRoutine());
         healthSystem = GameObject.FindGameObjectWithTag("HealthSystem").GetComponent<HealthSystem>();
     }
@@ -29,8 +29,6 @@ public class AnimalSpawner : MonoBehaviour
         while (!healthSystem.gameOver)
         {
             SpawnRandomAnimal();
-            float currentSpawnRate = baseSpawnRate / gameManager.GetDifficultyModifier();
-            
 
             float randomDelay = Random.Range(1.5f, 2.0f);
             yield return new WaitForSeconds(randomDelay);
@@ -49,7 +47,7 @@ public class AnimalSpawner : MonoBehaviour
 
     public void AdjustSpawnRate(float amount)
     {
-        currentSpawnRate = Mathf.Clamp(currentSpawnRate, 0.5f, 5f);
+        currentSpawnRate = Mathf.Clamp(currentSpawnRate + amount, minSpawnRate, maxSpawnRate);
     }
 }
 

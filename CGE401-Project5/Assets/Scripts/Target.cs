@@ -25,7 +25,11 @@ public class Target : MonoBehaviour
             CureAnimal();
             gameManager.HitInfectedAnimal();
         }
-         
+        else if (health <= 0 && !isInfected)
+        {
+            Destroy(gameObject);
+            gameManager.HitNormalAnimal();
+        } 
     }
 
     void CureAnimal()
