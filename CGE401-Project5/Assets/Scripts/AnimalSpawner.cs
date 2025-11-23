@@ -14,20 +14,24 @@ public class AnimalSpawner : MonoBehaviour
     private float leftBound = -5;
     private float rightBound = 5;
     private float spawnPosZ = 20;
+    public HealthSystem healthSystem;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         currentSpawnRate = initialSpawnRate;
         StartCoroutine(SpawnRoutine());
+        healthSystem = GameObject.FindGameObjectWithTag("HealthSystem").GetComponent<HealthSystem>();
     }
 
     IEnumerator SpawnRoutine()
     {
-        while (true)
+        while (!healthSystem.gameOver)
         {
-            yield return new WaitForSeconds(currentSpawnRate);
             SpawnRandomAnimal();
+
+            float randomDelay = Random.Range(1.5f, 2.0f);
+            yield return new WaitForSeconds(randomDelay);
         }
     }
 
