@@ -7,10 +7,29 @@ using UnityEngine;
     * Project 5
     * Rifle weapon extension
 */
-public class Rifle : Weapons
+public class Rifle : MonoBehaviour, IWeapon
 {
-    private void Start()
+    public float Damage => 25f;
+    public float Range => 25f;  // Shorter distance
+
+    private PlayerShooting shooter;
+
+    void Awake()
     {
-        weaponName = "Rifle";
+        shooter = GetComponentInParent<PlayerShooting>();
     }
+
+    public void Activate() { gameObject.SetActive(true); }
+    public void Deactivate() { gameObject.SetActive(false); }
+
+    public void Shoot()
+    {
+        shooter.FireRaycast(Damage, Range);
+        Debug.Log("Rifle fired");
+    }
+
+    /*   private void Start()
+       {
+           weaponName = "Rifle";
+       }*/
 }

@@ -11,4 +11,9 @@ public interface IWeapon
 {
     void Activate();
     void Deactivate();
+
+    float Damage { get; }
+    float Range { get; }
+
+    void Shoot();          // Weapon-specific firing logic
 }

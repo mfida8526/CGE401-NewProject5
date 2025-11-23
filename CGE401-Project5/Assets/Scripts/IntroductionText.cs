@@ -14,6 +14,7 @@ public class IntroductionText : MonoBehaviour
     public GameObject introductionPanel;
     public Text introductionText;
     public Text titleText;
+    public Text timerText;
     public string[] dialogue;
     private int index;
 
@@ -68,6 +69,7 @@ public class IntroductionText : MonoBehaviour
         else
         {
             introductionPanel.SetActive(false);
+            timerText.gameObject.SetActive(true);
             Time.timeScale = 1f;
         }
     }
