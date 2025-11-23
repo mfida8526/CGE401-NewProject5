@@ -40,14 +40,9 @@ public class ShootWithRaycasts : MonoBehaviour
         {
             Debug.Log(hitInfo.transform.gameObject.name);
 
-            Target target = hitInfo.transform.gameObject.GetComponent<Target>();
-            if (hitInfo.transform.CompareTag("Enemy"))
+            Target target = hitInfo.transform.GetComponent<Target>();
+            if (hitInfo.transform.CompareTag("Friendly"))
             {
-                gameManager.HitInfectedAnimal();
-            }
-            else if (hitInfo.transform.CompareTag("Friendly"))
-            {
-
                 gameManager.HitNormalAnimal();
             }
 

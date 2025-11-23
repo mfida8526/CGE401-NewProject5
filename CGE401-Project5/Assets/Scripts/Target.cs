@@ -9,6 +9,12 @@ public class Target : MonoBehaviour
 
     public GameObject infectedAnimal;
     public GameObject curedAnimal;
+    private GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+    }
 
 
     public void TakeDamage(float amount)
@@ -17,9 +23,9 @@ public class Target : MonoBehaviour
         if (health <= 0 && isInfected)
         {
             CureAnimal();
-
+            gameManager.HitInfectedAnimal();
         }
-
+         
     }
 
     void CureAnimal()

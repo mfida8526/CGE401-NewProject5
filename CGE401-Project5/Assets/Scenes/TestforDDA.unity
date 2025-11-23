@@ -7310,8 +7310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d261e17e1260d438ba0bc9f3ea1ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  range: 100
 --- !u!1 &642894323
 GameObject:
   m_ObjectHideFlags: 0
@@ -12198,6 +12196,7 @@ MonoBehaviour:
   initialSpawnRate: 2
   minSpawnRate: 0.5
   maxSpawnRate: 6
+  healthSystem: {fileID: 815627001}
 --- !u!4 &933577077
 Transform:
   m_ObjectHideFlags: 0
