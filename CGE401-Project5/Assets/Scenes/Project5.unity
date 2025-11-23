@@ -3297,10 +3297,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1574472788}
-    - target: {fileID: 6366403948051645971, guid: 39c02797fb118174cb64809128d870ef, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 59175701}
+    - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
+      propertyPath: progressBarSlider
+      value: 
+      objectReference: {fileID: 815698927}
     - target: {fileID: 6367698273310265488, guid: 39c02797fb118174cb64809128d870ef, type: 3}
       propertyPath: m_Name
       value: Shotgun
@@ -29274,14 +29278,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1574472789}
     m_Modifications:
-    - target: {fileID: 5855276150324362500, guid: c432b4f7b3abf444dac57d7b13c5d2c0, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5855276150654660577, guid: c432b4f7b3abf444dac57d7b13c5d2c0, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1574472788}
+    - target: {fileID: 5855276150654660577, guid: c432b4f7b3abf444dac57d7b13c5d2c0, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 59175701}
+    - target: {fileID: 5855276150654660577, guid: c432b4f7b3abf444dac57d7b13c5d2c0, type: 3}
+      propertyPath: progressBarSlider
+      value: 
+      objectReference: {fileID: 815698927}
     - target: {fileID: 5856646076781011494, guid: c432b4f7b3abf444dac57d7b13c5d2c0, type: 3}
       propertyPath: m_Name
       value: Rifle
