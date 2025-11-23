@@ -3131,6 +3131,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1574472788}
+    - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
+      propertyPath: range
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6366403948051645971, guid: 39c02797fb118174cb64809128d870ef, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -12196,6 +12204,7 @@ MonoBehaviour:
   initialSpawnRate: 2
   minSpawnRate: 0.5
   maxSpawnRate: 6
+  currentSpawnRate: 0
   healthSystem: {fileID: 815627001}
 --- !u!4 &933577077
 Transform:

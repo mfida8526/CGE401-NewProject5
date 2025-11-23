@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInfected: 1
-  health: 50
+  health: 100
   infectedAnimal: {fileID: 30470755390308488}
   curedAnimal: {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
 --- !u!1 &36089490214869362
