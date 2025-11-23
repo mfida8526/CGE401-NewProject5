@@ -24,6 +24,7 @@ public class Shotgun : MonoBehaviour, IWeapon
             Debug.LogError("ShotgunWeapon: PlayerShooting not found in parent!");
     }
 
+    // Properties required by IWeapon
     public float Damage => damage;
     public float Range => range;
 
@@ -39,9 +40,12 @@ public class Shotgun : MonoBehaviour, IWeapon
 
     public void Shoot()
     {
+        // Track targets hit this shot to notify GameManager only once per target
+        HashSet<Target> hitTargets = new HashSet<Target>();
+
         for (int i = 0; i < pellets; i++)
         {
-            // Calculate random spread
+            // Calculate random spread for each pellet
             Vector3 direction = shooter.transform.forward;
             direction = Quaternion.Euler(
                 Random.Range(-spreadAngle, spreadAngle),
@@ -50,25 +54,34 @@ public class Shotgun : MonoBehaviour, IWeapon
             ) * direction;
 
             // Fire the pellet
-            RaycastHit hit;
-            if (Physics.Raycast(shooter.transform.position, direction, out hit, range))
+            if (Physics.Raycast(shooter.transform.position, direction, out RaycastHit hit, range))
             {
                 Target target = hit.transform.GetComponent<Target>();
                 if (target != null)
                 {
+                    // Apply damage per pellet
                     target.TakeDamage(damage);
 
-                    // Notify GameManager
-                    if (target.isInfected)
-                        shooter.GetComponent<GameManager>()?.HitInfectedAnimal();
-                    else
-                        shooter.GetComponent<GameManager>()?.HitNormalAnimal();
+                    // Notify GameManager only once per target
+                    if (!hitTargets.Contains(target))
+                    {
+                        hitTargets.Add(target);
+                        GameManager gm = shooter.GetComponent<GameManager>();
+                        if (gm != null)
+                        {
+                            if (target.isInfected)
+                                gm.HitInfectedAnimal();
+                            else
+                                gm.HitNormalAnimal();
+                        }
+                    }
                 }
             }
         }
 
         Debug.Log("Shotgun fired!");
     }
+
     /*   private void Start()
        {
            weaponName = "Shotgun";
