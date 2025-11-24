@@ -10,70 +10,59 @@ using UnityEngine;
 public class Shotgun : MonoBehaviour, IWeapon
 {
     [Header("Shotgun Settings")]
-    public int pellets = 8;              // Number of pellets per shot
-    public float spreadAngle = 15f;      // Spread angle in degrees
-    public float damage = 8f;            // Damage per pellet
-    public float range = 20f;            // Short-range
+    public int pellets = 8;
+    public float spreadAngle = 15f;
+    public float damage = 8f;
+    public float range = 20f;
 
     private PlayerShooting shooter;
+    private GameManager gameManager;
 
     void Awake()
     {
         shooter = GetComponentInParent<PlayerShooting>();
         if (shooter == null)
             Debug.LogError("ShotgunWeapon: PlayerShooting not found in parent!");
+
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager == null)
+            Debug.LogError("GameManager not found in scene!");
     }
 
-    // Properties required by IWeapon
     public float Damage => damage;
     public float Range => range;
 
-    public void Activate()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Deactivate()
-    {
-        gameObject.SetActive(false);
-    }
+    public void Activate() => gameObject.SetActive(true);
+    public void Deactivate() => gameObject.SetActive(false);
 
     public void Shoot()
     {
-        // Track targets hit this shot to notify GameManager only once per target
         HashSet<Target> hitTargets = new HashSet<Target>();
 
         for (int i = 0; i < pellets; i++)
         {
-            // Calculate random spread for each pellet
-            Vector3 direction = shooter.transform.forward;
+            // Cast from camera, NOT shotgun object
+            Vector3 origin = Camera.main.transform.position;
+            Vector3 direction = Camera.main.transform.forward;
+
             direction = Quaternion.Euler(
                 Random.Range(-spreadAngle, spreadAngle),
                 Random.Range(-spreadAngle, spreadAngle),
                 0
             ) * direction;
 
-            // Fire the pellet
-            if (Physics.Raycast(shooter.transform.position, direction, out RaycastHit hit, range))
+            if (Physics.Raycast(origin, direction, out RaycastHit hit, range))
             {
                 Target target = hit.transform.GetComponent<Target>();
+
                 if (target != null)
                 {
-                    // Apply damage per pellet
                     target.TakeDamage(damage);
 
-                    // Notify GameManager only once per target
                     if (!hitTargets.Contains(target))
                     {
                         hitTargets.Add(target);
-                        GameManager gm = shooter.GetComponent<GameManager>();
-                        if (gm != null)
-                        {
-                            if (target.isInfected)
-                                gm.HitInfectedAnimal();
-                            else
-                                gm.HitNormalAnimal();
-                        }
+                        gameManager.HitInfectedAnimal();   // All animals are infected now
                     }
                 }
             }

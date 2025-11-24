@@ -39,11 +39,7 @@ public class PlayerShooting : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
-
-                if (target.isInfected)
-                    gameManager.HitInfectedAnimal();
-                else
-                    gameManager.HitNormalAnimal();
+                gameManager.HitInfectedAnimal();
             }
         }
     }

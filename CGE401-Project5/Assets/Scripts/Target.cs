@@ -4,43 +4,26 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public bool isInfected = false;
     public float health = 50f;
-
-    public GameObject infectedAnimal;
-    public GameObject curedAnimal;
     private GameManager gameManager;
 
     void Start()
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
-
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health <= 0 && isInfected)
+
+        if (health <= 0f)
         {
-            CureAnimal();
-            gameManager.HitInfectedAnimal();
+            Die();
         }
-        else if (health <= 0 && !isInfected)
-        {
-            Destroy(gameObject);
-            gameManager.HitNormalAnimal();
-        } 
     }
 
-    void CureAnimal()
-    {
-        infectedAnimal.SetActive(false);
-        curedAnimal.SetActive(true);
-    }
-
-    /*    void Die()
+    void Die()
         {
             Destroy(gameObject);
         }
-    */
 }
