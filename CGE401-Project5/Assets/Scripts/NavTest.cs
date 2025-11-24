@@ -6,8 +6,12 @@ using UnityEngine.AI;
 public class NavTest : MonoBehaviour
 {
     public Transform player;
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
+    void Awake() => agent = GetComponent<NavMeshAgent>();
 
-    void Start() { agent = GetComponent<NavMeshAgent>(); }
-    void Update() { agent.SetDestination(player.position); }
+    void Update()
+    {
+        if (player != null && Vector3.Distance(agent.destination, player.position) > 0.1f)
+            agent.SetDestination(player.position);
+    }
 }
