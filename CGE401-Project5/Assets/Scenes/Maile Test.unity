@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3b4c08ae249a9e24e8bc84b662638f01, type: 2}
 --- !u!43 &4748512
 Mesh:
   m_ObjectHideFlags: 0
@@ -2140,7 +2140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &128131522
 Transform:
   m_ObjectHideFlags: 0
@@ -2170,6 +2170,7 @@ MonoBehaviour:
   introductionPanel: {fileID: 825432879}
   introductionText: {fileID: 1741003871}
   titleText: {fileID: 1253546034}
+  timerText: {fileID: 0}
   dialogue:
   - 'The nearby forest has been contaminated with a deadly virus. '
   - 'You are tasked with curing the animals in the area while being mindful of the
@@ -10301,6 +10302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Introduction Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 1702710275618123669, guid: f1ed5742847ebb744b0b57efb0c56504, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ed5742847ebb744b0b57efb0c56504, type: 3}
 --- !u!1 &899131926
@@ -14140,7 +14145,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1064342399
 MeshCollider:
@@ -14990,7 +14995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1136896392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26964,7 +26969,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51254
+  m_Name: pb_Mesh170160
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31721,6 +31726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 8222559164634919335, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8743656566730926877, guid: 16333a27c36cee249ac04d632ab0fadd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -33377,6 +33386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deer
       objectReference: {fileID: 0}
+    - target: {fileID: 2686693857524636612, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3315455786373251454, guid: 2a12edc95a7af3b47b785b92600bef57, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -34014,6 +34027,10 @@ PrefabInstance:
     - target: {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
       propertyPath: m_Name
       value: Buffalo_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742587007247028966, guid: 3910906586e320f499f5da305f61701f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3261856235044980828, guid: 3910906586e320f499f5da305f61701f, type: 3}
       propertyPath: m_RootOrder
