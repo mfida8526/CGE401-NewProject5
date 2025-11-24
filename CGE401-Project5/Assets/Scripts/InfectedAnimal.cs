@@ -21,6 +21,7 @@ public class InfectedAnimal : MonoBehaviour
     private float lastHitTime = -999f;
 
     private NavMeshAgent agent;
+    private Vector3 lastTargetPos;
 
     private void Awake()
     {
@@ -49,39 +50,54 @@ public class InfectedAnimal : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // Player is too far — stop chasing
+        // Too far? Stop chasing.
         if (distance > detectionRange)
         {
-            agent.isStopped = true;
+            if (!agent.isStopped)
+            {
+                agent.isStopped = true;
+                agent.ResetPath();
+            }
             return;
         }
 
-        // Chase player if outside attack range
-        if (distance > attackRange)
+        // In attack range
+        if (distance <= attackRange)
         {
-            agent.isStopped = false;
-            agent.SetDestination(player.position);
-
-            // Rotate toward movement direction
-            if (agent.velocity.magnitude > 0.1f)
+            if (!agent.isStopped)
             {
-                Quaternion lookRot = Quaternion.LookRotation(agent.velocity.normalized);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 5f * Time.deltaTime);
+                agent.isStopped = true;
+                agent.ResetPath();
             }
-        }
-        else
-        {
-            // Player in attack range — stop moving
-            agent.isStopped = true;
 
-            // Face the player
+            // Face player
             Vector3 lookDir = (player.position - transform.position);
             lookDir.y = 0;
-            if (lookDir != Vector3.zero)
+            if (lookDir.sqrMagnitude > 0.01f)
             {
                 Quaternion lookRot = Quaternion.LookRotation(lookDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 8f * Time.deltaTime);
             }
+
+            return;
+        }
+
+        // Chase behavior
+        if (agent.isStopped)
+            agent.isStopped = false;
+
+        // Only update destination when needed
+        if ((player.position - lastTargetPos).sqrMagnitude > 0.5f)
+        {
+            agent.SetDestination(player.position);
+            lastTargetPos = player.position;
+        }
+
+        // Rotate toward movement
+        if (agent.velocity.sqrMagnitude > 0.1f)
+        {
+            Quaternion lookRot = Quaternion.LookRotation(agent.velocity.normalized);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 5f * Time.deltaTime);
         }
     }
 
