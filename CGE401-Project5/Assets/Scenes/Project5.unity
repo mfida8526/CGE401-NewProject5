@@ -3298,6 +3298,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1574472788}
     - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
+      propertyPath: range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366403947853608351, guid: 39c02797fb118174cb64809128d870ef, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 59175701}
@@ -34013,6 +34021,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1574472788}
+    - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
+      propertyPath: range
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8298621925151931573, guid: b5e3585750fb5f44e83fb103c84a195e, type: 3}
       propertyPath: gameManager
       value: 
