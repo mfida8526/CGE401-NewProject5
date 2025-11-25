@@ -5,6 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 50f;
+    public bool isInfected;
     private GameManager gameManager;
 
     void Start()
@@ -16,9 +17,15 @@ public class Target : MonoBehaviour
     {
         health -= amount;
 
-        if (health <= 0f)
+        if (health <= 0f && isInfected)
         {
             Die();
+            gameManager.HitInfectedAnimal();
+        }
+        else if (health <= 0f && !isInfected)
+        {
+            Die();
+            gameManager.HitNormalAnimal();
         }
     }
 

@@ -11,7 +11,6 @@ public class ShootWithRaycasts : MonoBehaviour
     public Camera cam;
     public ParticleSystem muzzleFlash;
     public float hitForce = 10f;
-    public Slider progressBarSlider;
     public GameManager gameManager;
 
 
