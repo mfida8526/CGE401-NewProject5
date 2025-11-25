@@ -8194,8 +8194,8 @@ GameObject:
   - component: {fileID: 5488200432535922643}
   - component: {fileID: 5911456473576001839}
   - component: {fileID: 4067027091968124016}
-  - component: {fileID: 612867960}
   - component: {fileID: 692373326}
+  - component: {fileID: 1539700508153947376}
   m_Layer: 0
   m_Name: Buffalo_v1
   m_TagString: Friendly
@@ -8284,25 +8284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
---- !u!114 &612867960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2742587007247028966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c23ce6c20371d94e8763c6adddceea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 4
-  rotationSpeed: 1
-  wanderRadius: 100
-  changeDirectionTime: 3
-  minPauseTime: 1
-  maxPauseTime: 3
-  pauseChance: 0.4
+  isInfected: 0
 --- !u!195 &692373326
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8325,6 +8307,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1539700508153947376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742587007247028966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7a9d9abfa093646a088ea9d0d2bcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  detectionRange: 50
+  attackRange: 2
+  hitCooldown: 1
 --- !u!1 &2752163701337731801
 GameObject:
   m_ObjectHideFlags: 0

@@ -1217,8 +1217,8 @@ GameObject:
   - component: {fileID: 8281922393401657090}
   - component: {fileID: 1271196936479086246}
   - component: {fileID: 2133956849}
-  - component: {fileID: 2133956843}
   - component: {fileID: 1944439912}
+  - component: {fileID: 8325181005955786998}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Friendly
@@ -1288,10 +1288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04dbaef188ab9b408a7b9e366893ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInfected: 0
   health: 20
-  infectedAnimal: {fileID: 0}
-  curedAnimal: {fileID: 0}
+  isInfected: 0
 --- !u!54 &2133956849
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1308,25 +1306,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2133956843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2686693857524636612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c23ce6c20371d94e8763c6adddceea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 4
-  rotationSpeed: 1
-  wanderRadius: 100
-  changeDirectionTime: 3
-  minPauseTime: 1
-  maxPauseTime: 3
-  pauseChance: 0.4
 --- !u!195 &1944439912
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1349,6 +1328,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8325181005955786998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2686693857524636612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7a9d9abfa093646a088ea9d0d2bcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  detectionRange: 50
+  attackRange: 2
+  hitCooldown: 1
 --- !u!1 &2829985513712016029
 GameObject:
   m_ObjectHideFlags: 0
