@@ -40,18 +40,28 @@ public class AnimalSpawner : MonoBehaviour
     {
         int prefabIndex = Random.Range(0, animalPrefabs.Length);
 
-        // Start a bit above the expected surface
         Vector3 spawnPos = new Vector3(
             Random.Range(leftBound, rightBound),
-            10f,
+            0.5f, // make sure it’s near the NavMesh
             spawnPosZ
         );
 
-        // Sample the NavMesh to find a valid spawn position
         NavMeshHit hit;
         if (NavMesh.SamplePosition(spawnPos, out hit, 5f, NavMesh.AllAreas))
         {
-            Instantiate(animalPrefabs[prefabIndex], hit.position, animalPrefabs[prefabIndex].transform.rotation);
+            // Instantiate and store a reference to the new animal
+            GameObject newAnimal = Instantiate(
+                animalPrefabs[prefabIndex],
+                hit.position,
+                animalPrefabs[prefabIndex].transform.rotation
+            );
+
+            // <-- NEW CODE: assign player reference if it has InfectedAnimal script
+            InfectedAnimal ia = newAnimal.GetComponent<InfectedAnimal>();
+            if (ia != null)
+            {
+                ia.player = GameObject.FindGameObjectWithTag("Player")?.transform;
+            }
         }
         else
         {
