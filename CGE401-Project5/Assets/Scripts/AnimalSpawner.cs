@@ -12,9 +12,9 @@ public class AnimalSpawner : MonoBehaviour
     public float currentSpawnRate;
     private GameManager gameManager;
 
-    private float leftBound = -5;
-    private float rightBound = 5;
-    private float spawnPosZ = 20;
+    public float leftBound = -5;
+    public float rightBound = 5;
+    public float spawnPosZ = 20;
     public HealthSystem healthSystem;
 
     void Start()

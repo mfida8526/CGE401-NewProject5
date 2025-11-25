@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
-    // UI References (assign in Inspector)
-    public TextMeshProUGUI timerText;
-    public Slider progressBar; // Progress bar for 10 units
-    public float gameTimer = 140f; // Example total game time
-    private const float TIME_PENALTY_SECONDS = 30f;
 
-    // Game State Variables
-    private int score = 0; // Or whatever "progress" means
+    public TextMeshProUGUI timerText;
+    public Slider progressBar; 
+    public float gameTimer = 180f; 
+    private const float TIME_PENALTY_SECONDS = 30f;
+    public GameObject losePanel;
+
+    
+    private int score = 0; 
     private int requiredProgress = 10;
 
 
-    // References to other managers
+    
     private AnimalSpawner animalSpawner;
 
     void Start()
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
         if (score >= requiredProgress)
         {
             GameWon();
+
         }
     }
 
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void HitNormalAnimal()
     {
-        // Decrease timer (e.g., lose 5 seconds)
+        // Decrease timer (e.g., lose 15 seconds)
         gameTimer -= TIME_PENALTY_SECONDS;
         // Decrease spawn rate slightly (increase time between spawns, e.g., by +0.05f)
         animalSpawner.AdjustSpawnRate(0.05f);
@@ -81,14 +84,13 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         Debug.Log("Game Over!");
-        // Implement game over logic here (stop spawning, show UI, etc.)
-        Time.timeScale = 0; // Stop the game
+        
+        losePanel.gameObject.SetActive(true);
     }
 
     public void GameWon()
     {
         Debug.Log("You Won!");
-        // Implement win logic here
-        Time.timeScale = 0; // Stop the game
+       SceneManager.LoadScene("Wave 2");
     }
 }
