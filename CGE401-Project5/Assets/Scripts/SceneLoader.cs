@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,18 +25,66 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    // Example of calling the method (e.g., on a key press)
+    public void RestartCurrentScene()
+    {
+        Time.timeScale = 1f; // unpause
+
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int lastIndex = SceneManager.sceneCountInBuildSettings - 1;
+
+        // If we're on the last scene, restart from first scene
+        if (currentIndex == lastIndex)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            // Otherwise restart the same scene
+            SceneManager.LoadScene(currentIndex);
+        }
+    }
+
+    // Load the next scene automatically
+    public void LoadNextScene()
+    {
+        Time.timeScale = 1f; // unpause
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + 1;
+
+        // If last scene → wrap back to first scene
+        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            nextIndex = 0;
+        }
+
+        SceneManager.LoadScene(nextIndex);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            LoadTargetScene();
+            LoadNextScene();   
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            LoadTargetScene();
+            RestartCurrentScene();  
         }
     }
+
+    // Example of calling the method (e.g., on a key press)
+    /* void Update()
+     {
+         if (Input.GetKeyDown(KeyCode.C))
+         {
+             LoadTargetScene();
+         }
+
+         if (Input.GetKeyDown(KeyCode.R))
+         {
+             LoadTargetScene();
+         }
+     }*/
 }
 

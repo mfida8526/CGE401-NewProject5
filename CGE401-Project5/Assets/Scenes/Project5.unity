@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1589,6 +1589,8 @@ MonoBehaviour:
   timerText: {fileID: 2102612335}
   progressBar: {fileID: 815698927}
   gameTimer: 140
+  losePanel: {fileID: 1540319594}
+  winPanel: {fileID: 1340661543}
 --- !u!4 &59175702
 Transform:
   m_ObjectHideFlags: 0
@@ -5790,7 +5792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867011513205345133, guid: 16f2368bcb9e0a047b9dc29f1a2624a4, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7867011513205345133, guid: 16f2368bcb9e0a047b9dc29f1a2624a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7368,8 +7370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00008643702, y: -6.1321993}
-  m_SizeDelta: {x: 433.3576, y: 108.8531}
+  m_AnchoredPosition: {x: 0.000013621, y: 0.0000061989}
+  m_SizeDelta: {x: 433.3576, y: 150.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611083280
 MonoBehaviour:
@@ -7615,6 +7617,63 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &663737712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1558900090392759869, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_Name
+      value: SceneManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 261.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 147
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558900090392759871, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 64ab3be97fe1d0f4ba84bbca61640e59, type: 3}
 --- !u!850595691 &732613268
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -15361,6 +15420,9 @@ MonoBehaviour:
   minSpawnRate: 0.5
   maxSpawnRate: 6
   currentSpawnRate: 0
+  leftBound: -5
+  rightBound: 5
+  spawnPosZ: 20
   healthSystem: {fileID: 815627001}
 --- !u!4 &1136896393
 Transform:
@@ -18682,8 +18744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000091552734, y: 6.132202}
-  m_SizeDelta: {x: -366.64, y: -329.024}
+  m_AnchoredPosition: {x: 25.6026, y: -8.2867}
+  m_SizeDelta: {x: -315.435, y: -300.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1340661545
 MonoBehaviour:
