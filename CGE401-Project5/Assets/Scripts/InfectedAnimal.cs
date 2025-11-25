@@ -112,6 +112,7 @@ public class InfectedAnimal : MonoBehaviour
                 playerHealth.TakeDamage();
                 Debug.Log("Enemy hit player!");
             }
+            Destroy(gameObject);
         }
     }
 }

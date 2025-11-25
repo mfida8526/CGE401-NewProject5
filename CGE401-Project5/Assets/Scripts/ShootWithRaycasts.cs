@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+* Mimi Davis
+* ShootWithRaycasts
+* Project5
+* Shoot with raycats for guns and makes target lose health 
+*/
 public class ShootWithRaycasts : MonoBehaviour
 {
-
+    
     public  float damage = 10f;
     public float range = 100f;
     public Camera cam;

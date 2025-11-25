@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.UI; 
 using UnityEngine.SceneManagement;
 using TMPro;
-
+/*
+* Mimi Davis
+* GameManager
+* Project5
+* Handles the timer, spawn rate, and progress bar
+*/
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
@@ -14,6 +19,8 @@ public class GameManager : MonoBehaviour
     public float gameTimer = 180f; 
     private const float TIME_PENALTY_SECONDS = 30f;
     public GameObject losePanel;
+    public GameObject winPanel;
+
 
     
     private int score = 0; 
@@ -86,11 +93,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         
         losePanel.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void GameWon()
     {
         Debug.Log("You Won!");
-       SceneManager.LoadScene("Wave 2");
+        Time.timeScale = 0f;
+        winPanel.gameObject.SetActive(true);
     }
+
 }

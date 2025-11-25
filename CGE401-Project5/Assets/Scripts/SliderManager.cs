@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+* Mimi Davis
+* SliderManager
+* Project5
+* Makes progress go up for the slider
+*/
 public class SliderManager : MonoBehaviour
 {
   public Slider progressBar;

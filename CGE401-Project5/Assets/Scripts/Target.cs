@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+* Mimi Davis
+* Target
+* Project5
+* Target health for animals being spawned and adds to progress bar
+*/
 public class Target : MonoBehaviour
 {
     public float health = 50f;

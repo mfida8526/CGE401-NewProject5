@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+/*
+* Mimi Davis
+*AnimalSpawner
+* Project5
+* Spawns random amount of animals 
+*/
 
 public class AnimalSpawner : MonoBehaviour
 {
