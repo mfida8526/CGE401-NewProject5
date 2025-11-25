@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  isInfected: 1
 --- !u!195 &457218408
 NavMeshAgent:
   m_ObjectHideFlags: 0
