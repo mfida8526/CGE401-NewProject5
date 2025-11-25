@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0; // Stop the game
     }
 
-    void GameWon()
+    public void GameWon()
     {
         Debug.Log("You Won!");
         // Implement win logic here
