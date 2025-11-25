@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
     // UI References (assign in Inspector)
-    public Text timerText;
+    public TextMeshProUGUI timerText;
     public Slider progressBar; // Progress bar for 10 units
     public float gameTimer = 140f; // Example total game time
-    private float timeRemaining;
     private const float TIME_PENALTY_SECONDS = 30f;
 
     // Game State Variables
@@ -24,22 +24,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         animalSpawner = FindObjectOfType<AnimalSpawner>();
-        timeRemaining = gameTimer;
+
         progressBar.maxValue = requiredProgress;
         progressBar.value = 0;
     }
 
     void Update()
     {
-        if (timeRemaining > 0)
+        if (gameTimer > 0)
         {
             gameTimer -= Time.deltaTime;
+            if (gameTimer < 0) gameTimer =0;
             UpdateTimerUI();
         }
-        
-        if (gameTimer <= 0)
+        else
         {
-
             GameOver();
         }
     }
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(gameTimer / 60);
         int seconds = Mathf.FloorToInt(gameTimer % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
     public void UpdateProgressUI()

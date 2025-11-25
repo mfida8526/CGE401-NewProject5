@@ -69,7 +69,6 @@ public class IntroductionText : MonoBehaviour
         else
         {
             introductionPanel.SetActive(false);
-            timerText.gameObject.SetActive(true);
             Time.timeScale = 1f;
         }
     }
