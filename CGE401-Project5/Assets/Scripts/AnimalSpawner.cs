@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AnimalSpawner : MonoBehaviour
 {
@@ -37,12 +38,25 @@ public class AnimalSpawner : MonoBehaviour
 
     void SpawnRandomAnimal()
     {
-        // Instantiate a random animal from the list
         int prefabIndex = Random.Range(0, animalPrefabs.Length);
 
-        Vector3 spawnPos = new Vector3(Random.Range(leftBound, rightBound), 0, spawnPosZ);
+        // Start a bit above the expected surface
+        Vector3 spawnPos = new Vector3(
+            Random.Range(leftBound, rightBound),
+            10f,
+            spawnPosZ
+        );
 
-        Instantiate(animalPrefabs[prefabIndex], spawnPos, animalPrefabs[prefabIndex].transform.rotation);
+        // Sample the NavMesh to find a valid spawn position
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(spawnPos, out hit, 5f, NavMesh.AllAreas))
+        {
+            Instantiate(animalPrefabs[prefabIndex], hit.position, animalPrefabs[prefabIndex].transform.rotation);
+        }
+        else
+        {
+            Debug.LogWarning("No valid NavMesh position found for spawning animal.");
+        }
     }
 
     public void AdjustSpawnRate(float amount)
