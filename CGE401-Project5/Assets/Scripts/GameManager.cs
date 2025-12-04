@@ -80,12 +80,24 @@ public class GameManager : MonoBehaviour
 
     public void HitNormalAnimal()
     {
+        StartCoroutine(FlashTimerColor(Color.red, 0.15f));
+
         // Decrease timer (e.g., lose 15 seconds)
         gameTimer -= TIME_PENALTY_SECONDS;
         // Decrease spawn rate slightly (increase time between spawns, e.g., by +0.05f)
         animalSpawner.AdjustSpawnRate(0.05f);
         Debug.Log("Hit normal! Time penalty, Spawn Rate adjusted.");
 
+    }
+
+    private IEnumerator FlashTimerColor(Color flashColor, float duration)
+    {
+        Color originalColor = timerText.color;   // timerText is your TMP Text
+        timerText.color = flashColor;
+
+        yield return new WaitForSeconds(duration);
+
+        timerText.color = originalColor;
     }
 
     void GameOver()
