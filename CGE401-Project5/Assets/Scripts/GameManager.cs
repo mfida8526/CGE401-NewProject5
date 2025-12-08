@@ -65,7 +65,10 @@ public class GameManager : MonoBehaviour
         if (score >= requiredProgress)
         {
             GameWon();
-
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+               SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
