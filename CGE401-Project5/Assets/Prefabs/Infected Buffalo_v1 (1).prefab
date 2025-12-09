@@ -134,12 +134,11 @@ GameObject:
   m_Component:
   - component: {fileID: 803769736304499250}
   - component: {fileID: 913431569025299274}
-  - component: {fileID: 7658900652309788093}
   - component: {fileID: 8388612845112263489}
+  - component: {fileID: 7658900652309788093}
   - component: {fileID: 1770227139}
   - component: {fileID: 3842105556541368304}
   - component: {fileID: 457218408}
-  - component: {fileID: -725425157822571283}
   m_Layer: 0
   m_Name: Infected Buffalo_v1 (1)
   m_TagString: Enemy
@@ -156,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 30470755390308488}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 2.9993331, y: 0, z: 10.79}
-  m_LocalScale: {x: 32, y: 32, z: 32}
+  m_LocalScale: {x: 29, y: 29, z: 29}
   m_Children:
   - {fileID: 3064773027569413356}
   - {fileID: 9118664051424492046}
@@ -187,6 +186,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &8388612845112263489
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30470755390308488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.055107858, y: 0.095248796, z: 0.16878927}
+  m_Center: {x: -0.00068201125, y: 0.04513255, z: 0.022712484}
 --- !u!54 &7658900652309788093
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,19 +215,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8388612845112263489
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30470755390308488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.055107858, y: 0.098686695, z: 0.16878927}
-  m_Center: {x: -0.00068201125, y: 0.046851527, z: 0.022712482}
 --- !u!114 &1770227139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,18 +267,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-725425157822571283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30470755390308488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b20148d4d894d408bcfb786cdf06eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &36089490214869362
 GameObject:
   m_ObjectHideFlags: 0
