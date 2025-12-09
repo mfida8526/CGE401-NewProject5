@@ -43,12 +43,22 @@ public class GameManager : MonoBehaviour
         if (gameTimer > 0)
         {
             gameTimer -= Time.deltaTime;
-            if (gameTimer < 0) gameTimer =0;
+            if (gameTimer < 0) gameTimer = 0;
             UpdateTimerUI();
         }
         else
         {
             GameOver();
+        }
+
+        if (winPanel != null)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+               SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+
         }
     }
 
@@ -65,10 +75,6 @@ public class GameManager : MonoBehaviour
         if (score >= requiredProgress)
         {
             GameWon();
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-               SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
         }
     }
 

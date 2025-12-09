@@ -11,11 +11,12 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public string sceneToLoadName; // Assign this in the Inspector
+    public GameObject winPanel;
 
     public void LoadTargetScene()
     {
         // Check if the scene name is not empty
-        if (!string.IsNullOrEmpty(sceneToLoadName))
+        if (!string.IsNullOrEmpty(sceneToLoadName) && winPanel != null)
         {
             SceneManager.LoadScene(sceneToLoadName);
         }
@@ -62,14 +63,14 @@ public class SceneLoader : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.R) && winPanel != null)
         {
             LoadNextScene();   
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.C) && winPanel != null)
         {
-            RestartCurrentScene();  
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);  
         }
     }
 

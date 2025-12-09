@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5219,10 +5219,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  range: 100
+  range: 40
   cam: {fileID: 0}
   muzzleFlash: {fileID: 553667894}
   hitForce: 5
+  gameManager: {fileID: 0}
 --- !u!114 &2066927981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5235,7 +5236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f1eb4964be5f2488893f901671a65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 
 --- !u!1 &6566581590772908376
 GameObject:
   m_ObjectHideFlags: 0
