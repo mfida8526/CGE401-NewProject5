@@ -5219,7 +5219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  range: 40
+  range: 20
   cam: {fileID: 0}
   muzzleFlash: {fileID: 553667894}
   hitForce: 5

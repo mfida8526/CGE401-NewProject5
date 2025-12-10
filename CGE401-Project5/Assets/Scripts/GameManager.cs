@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     
     private int score = 0; 
-    private int requiredProgress = 10;
+    public int requiredProgress = 10;
 
 
     
