@@ -12,16 +12,20 @@ using UnityEngine.AI;
 public class InfectedAnimal : MonoBehaviour
 {
     [Header("Movement")]
-    public Transform player;            // Assigned when spawned
-    public float detectionRange = 15f;  // Distance at which enemy starts chasing
-    public float attackRange = 2f;      // Distance at which enemy stops and attacks
+    public Transform player;
+    public float attackRange = 2f;
 
     [Header("Damage")]
     public float hitCooldown = 1f;
     private float lastHitTime = -999f;
 
+    [Header("Chase Behavior")]
+    public float targetUpdateDistance = 0.5f;  // Distance before updating player target
+    public float refreshDelay = 0.2f;          // Delay to give player dodge time
+
     private NavMeshAgent agent;
-    private Vector3 lastTargetPos;
+    private Vector3 lastKnownPlayerPos;
+    private bool updatingTarget = false;
 
     private void Awake()
     {
@@ -32,15 +36,23 @@ public class InfectedAnimal : MonoBehaviour
             Debug.LogError("NavMeshAgent missing on InfectedAnimal!");
         }
 
-        // Keep rotation controlled by script, not NavMeshAgent's auto-rotation
+        // Rotate manually
         agent.updateRotation = false;
 
-        // Ensure Rigidbody is optional & kinematic (not used for movement)
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true;
-            rb.useGravity = false; // NavMesh handles ground snapping
+            rb.useGravity = false;
+        }
+    }
+
+    private void Start()
+    {
+        if (player != null)
+        {
+            lastKnownPlayerPos = player.position;
+            agent.SetDestination(lastKnownPlayerPos);
         }
     }
 
@@ -50,18 +62,7 @@ public class InfectedAnimal : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // Too far? Stop chasing.
-        if (distance > detectionRange)
-        {
-            if (!agent.isStopped)
-            {
-                agent.isStopped = true;
-                agent.ResetPath();
-            }
-            return;
-        }
-
-        // In attack range
+        // --- ATTACK BEHAVIOR ---
         if (distance <= attackRange)
         {
             if (!agent.isStopped)
@@ -82,18 +83,17 @@ public class InfectedAnimal : MonoBehaviour
             return;
         }
 
-        // Chase behavior
+        // If target is out of attack range, resume moving
         if (agent.isStopped)
             agent.isStopped = false;
 
-        // Only update destination when needed
-        if ((player.position - lastTargetPos).sqrMagnitude > 0.5f)
+        // --- ALWAYS CHASE / DELAYED TRACKING ---
+        if (!updatingTarget && !agent.pathPending && agent.remainingDistance <= targetUpdateDistance)
         {
-            agent.SetDestination(player.position);
-            lastTargetPos = player.position;
+            StartCoroutine(UpdatePlayerDestination());
         }
 
-        // Rotate toward movement
+        // Rotate based on movement
         if (agent.velocity.sqrMagnitude > 0.1f)
         {
             Quaternion lookRot = Quaternion.LookRotation(agent.velocity.normalized);
@@ -101,17 +101,33 @@ public class InfectedAnimal : MonoBehaviour
         }
     }
 
+    private System.Collections.IEnumerator UpdatePlayerDestination()
+    {
+        updatingTarget = true;
+
+        // Small delay gives player space to dodge
+        yield return new WaitForSeconds(refreshDelay);
+
+        // Update to player’s new position
+        lastKnownPlayerPos = player.position;
+        agent.SetDestination(lastKnownPlayerPos);
+
+        updatingTarget = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             HealthSystem playerHealth = collision.gameObject.GetComponent<HealthSystem>();
+
             if (playerHealth != null && Time.time - lastHitTime > hitCooldown)
             {
                 lastHitTime = Time.time;
                 playerHealth.TakeDamage();
                 Debug.Log("Enemy hit player!");
             }
+
             Destroy(gameObject);
         }
     }

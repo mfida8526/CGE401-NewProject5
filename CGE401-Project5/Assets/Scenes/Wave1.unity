@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1591,6 +1591,7 @@ MonoBehaviour:
   gameTimer: 180
   losePanel: {fileID: 1540319594}
   winPanel: {fileID: 1340661543}
+  requiredProgress: 10
 --- !u!4 &59175702
 Transform:
   m_ObjectHideFlags: 0
@@ -31460,7 +31461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1096299516257648766, guid: c9837ddb67784a841aa4274aa35e90a9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.567701
+      value: -8.567688
       objectReference: {fileID: 0}
     - target: {fileID: 1096299516257648766, guid: c9837ddb67784a841aa4274aa35e90a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32611,7 +32612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3240212156769234841
 RectTransform:
   m_ObjectHideFlags: 0
