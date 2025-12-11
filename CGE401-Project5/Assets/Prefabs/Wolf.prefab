@@ -3375,8 +3375,8 @@ GameObject:
   - component: {fileID: 8827449127622379649}
   - component: {fileID: 1329458559}
   - component: {fileID: 1796002205}
-  - component: {fileID: 5085712180858719986}
   - component: {fileID: -2756093961176039526}
+  - component: {fileID: 6587305096087110083}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Friendly
@@ -3487,22 +3487,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5085712180858719986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8222559164634919335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7a9d9abfa093646a088ea9d0d2bcbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  detectionRange: 50
-  attackRange: 2
-  hitCooldown: 1
 --- !u!114 &-2756093961176039526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3515,6 +3499,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b20148d4d894d408bcfb786cdf06eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6587305096087110083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222559164634919335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c23ce6c20371d94e8763c6adddceea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  chaseRange: 15
+  reTargetDistance: 3
+  offsetRadius: 4
 --- !u!1 &8234524659022629749
 GameObject:
   m_ObjectHideFlags: 0

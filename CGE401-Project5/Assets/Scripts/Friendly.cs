@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /*
     * Maile Fidale
@@ -9,84 +10,40 @@ using UnityEngine;
 */
 public class Friendly : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 0.5f;           // Walking speed
-    public float rotationSpeed = 1f;         // How fast the animal turns
-    public float wanderRadius = 3f;          // Max distance from spawn point
-    public float changeDirectionTime = 3f;   // Time between picking new directions
+    public float stopDistance = 0.5f;
+    public float minOffset = 2f;
+    public float maxOffset = 4f;
 
-    [Header("Pause Settings")]
-    public float minPauseTime = 1f;          // Minimum idle duration
-    public float maxPauseTime = 3f;          // Maximum idle duration
-    [Range(0f, 1f)]
-    public float pauseChance = 0.4f;         // Chance to pause when changing direction
-
-    private Rigidbody rb;
-    private Vector3 spawnPosition;
-    private Vector3 targetDirection;
-    private float timer = 0f;
-    private bool isPaused = false;
-    private float pauseTimer = 0f;
+    private Transform player;
+    private NavMeshAgent agent;
+    private Vector3 offsetTarget;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;   // Prevent physics from interfering
-        spawnPosition = transform.position;
-        PickNewDirection();
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        // Generate a random offset around the player
+        float radius = Random.Range(minOffset, maxOffset);
+        float angle = Random.Range(0f, Mathf.PI * 2f);
+
+        offsetTarget = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
     }
 
     void Update()
     {
-        if (isPaused)
+        if (player == null) return;
+
+        // The target position with the offset applied
+        Vector3 targetPos = player.position + offsetTarget;
+
+        // Tell the NavMeshAgent to move there
+        agent.SetDestination(targetPos);
+
+        // If close enough → disappear
+        if (!agent.pathPending && agent.remainingDistance <= stopDistance)
         {
-            pauseTimer -= Time.deltaTime;
-            if (pauseTimer <= 0f)
-            {
-                isPaused = false;
-                PickNewDirection();
-            }
-            return;
+            Destroy(gameObject);
         }
-
-        timer += Time.deltaTime;
-
-        if (timer >= changeDirectionTime)
-        {
-            timer = 0f;
-            if (Random.value < pauseChance)
-            {
-                isPaused = true;
-                pauseTimer = Random.Range(minPauseTime, maxPauseTime);
-                return;
-            }
-            else
-            {
-                PickNewDirection();
-            }
-        }
-
-        // Smooth rotation
-        Vector3 direction = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime, 0f);
-        transform.rotation = Quaternion.LookRotation(direction);
-    }
-
-    void FixedUpdate()
-    {
-        // Move forward slowly using Rigidbody
-        if (!isPaused)
-        {
-            rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
-        }
-    }
-
-    void PickNewDirection()
-    {
-        // Pick a random point within a circle around the spawn point
-        Vector2 randomCircle = Random.insideUnitCircle * wanderRadius;
-        Vector3 randomTarget = spawnPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
-
-        // Compute the direction to face
-        targetDirection = (randomTarget - transform.position).normalized;
     }
 }
