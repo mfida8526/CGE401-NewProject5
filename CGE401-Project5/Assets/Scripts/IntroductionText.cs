@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /*
 * Maile Fidale
@@ -16,30 +17,46 @@ public class IntroductionText : MonoBehaviour
     public Text titleText;
     public Text timerText;
     public string[] dialogue;
-    private int index;
 
+    private int index;
     public GameObject contButton;
     public float wordSpeed;
 
-    private bool isTyping = false;   // Prevents skipping while typing
+    private bool isTyping = false;
     private bool lineFinished = false;
+
+    private string tutorialKey; // unique key per scene
 
     void Start()
     {
+        // Create a unique key for this level
+        tutorialKey = "TutorialCompleted_" + SceneManager.GetActiveScene().name;
+
+        // Check if tutorial was already completed in this level
+        if (PlayerPrefs.GetInt(tutorialKey, 0) == 1)
+        {
+            SkipTutorialCompletely();
+            return;
+        }
+
+        // First time → run tutorial
         introductionPanel.SetActive(true);
-        StartCoroutine(Typing());  // Start the typing animation
-        Time.timeScale = 0f;
+        StartCoroutine(Typing());
+        Time.timeScale = 0f;  // Pause game
     }
-    // Update is called once per frame
+
     void Update()
     {
-        // Show continue button when finished
         contButton.SetActive(lineFinished);
 
-        // Player presses space to continue
         if (lineFinished && Input.GetKeyDown(KeyCode.Space))
         {
             NextLine();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SkipTutorialCompletely();
         }
     }
 
@@ -68,9 +85,28 @@ public class IntroductionText : MonoBehaviour
         }
         else
         {
-            introductionPanel.SetActive(false);
-            Time.timeScale = 1f;
+            EndTutorial();
         }
+    }
+
+    private void EndTutorial()
+    {
+        introductionPanel.SetActive(false);
+        Time.timeScale = 1f;
+
+        // Save completion for this specific level
+        PlayerPrefs.SetInt(tutorialKey, 1);
+        PlayerPrefs.Save();
+    }
+
+    private void SkipTutorialCompletely()
+    {
+        introductionPanel.SetActive(false);
+        Time.timeScale = 1f;
+
+        // Mark tutorial as completed for this level
+        PlayerPrefs.SetInt(tutorialKey, 1);
+        PlayerPrefs.Save();
     }
 }
 
