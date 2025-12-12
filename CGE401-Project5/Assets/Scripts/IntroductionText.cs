@@ -12,57 +12,54 @@ using UnityEngine.SceneManagement;
 
 public class IntroductionText : MonoBehaviour
 {
-    public GameObject introductionPanel;
-    public Text introductionText;
-    public Text titleText;
-    public Text timerText;
-    public string[] dialogue;
+    public GameObject introductionPanel;  // The tutorial panel
+    public Text introductionText;          // The text component for dialogue
+    public string[] dialogue;              // Lines of tutorial text
+    public float wordSpeed = 0.05f;       // Speed of typing effect
 
-    private int index;
-    public GameObject contButton;
-    public float wordSpeed;
-
-    private bool isTyping = false;
+    private int index = 0;
     private bool lineFinished = false;
 
-    private string tutorialKey; // unique key per scene
+    // Static set to track which scenes already showed the tutorial
+    private static HashSet<string> completedScenes = new HashSet<string>();
 
     void Start()
     {
-        // Create a unique key for this level
-        tutorialKey = "TutorialCompleted_" + SceneManager.GetActiveScene().name;
+        string sceneName = SceneManager.GetActiveScene().name;
 
-        // Check if tutorial was already completed in this level
-        if (PlayerPrefs.GetInt(tutorialKey, 0) == 1)
+        if (completedScenes.Contains(sceneName))
         {
-            SkipTutorialCompletely();
+            // Tutorial already shown for this scene → skip
+            introductionPanel.SetActive(false);
             return;
         }
 
-        // First time → run tutorial
+        // Mark as shown
+        completedScenes.Add(sceneName);
+
+        // Show tutorial
         introductionPanel.SetActive(true);
         StartCoroutine(Typing());
-        Time.timeScale = 0f;  // Pause game
+        Time.timeScale = 0f; // Pause game
     }
 
     void Update()
     {
-        contButton.SetActive(lineFinished);
-
+        // Advance to next line when Space is pressed
         if (lineFinished && Input.GetKeyDown(KeyCode.Space))
         {
             NextLine();
         }
 
+        // Skip tutorial entirely with Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SkipTutorialCompletely();
+            EndTutorial();
         }
     }
 
-    IEnumerator Typing()
+    private IEnumerator Typing()
     {
-        isTyping = true;
         lineFinished = false;
         introductionText.text = "";
 
@@ -72,12 +69,13 @@ public class IntroductionText : MonoBehaviour
             yield return new WaitForSecondsRealtime(wordSpeed);
         }
 
-        isTyping = false;
         lineFinished = true;
     }
 
-    public void NextLine()
+    private void NextLine()
     {
+        if (!lineFinished) return;
+
         if (index < dialogue.Length - 1)
         {
             index++;
@@ -93,20 +91,6 @@ public class IntroductionText : MonoBehaviour
     {
         introductionPanel.SetActive(false);
         Time.timeScale = 1f;
-
-        // Save completion for this specific level
-        PlayerPrefs.SetInt(tutorialKey, 1);
-        PlayerPrefs.Save();
-    }
-
-    private void SkipTutorialCompletely()
-    {
-        introductionPanel.SetActive(false);
-        Time.timeScale = 1f;
-
-        // Mark tutorial as completed for this level
-        PlayerPrefs.SetInt(tutorialKey, 1);
-        PlayerPrefs.Save();
     }
 }
 

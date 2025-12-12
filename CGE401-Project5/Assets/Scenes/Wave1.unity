@@ -7323,8 +7323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introductionPanel: {fileID: 3240212156769234840}
   introductionText: {fileID: 3240212157681881494}
-  titleText: {fileID: 3240212157590476329}
-  timerText: {fileID: 2101812742}
   dialogue:
   - The nearby forest has been contaminated with a deadly virus (press space to continue)
   - 'You are tasked with curing the animals in the area while being mindful of the
@@ -7335,7 +7333,6 @@ MonoBehaviour:
     is up. Make sure not to hit any uninfected animals as it lowers your timer. '
   - If you fail to cure the infected animal before it gets to you, you lose a heart.
     Make sure not to lose all your hearts or you will fail the level.
-  contButton: {fileID: 3240212157808285122}
   wordSpeed: 0
 --- !u!1 &642894323
 GameObject:
@@ -32953,7 +32950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3240212157808285123
 RectTransform:
   m_ObjectHideFlags: 0
